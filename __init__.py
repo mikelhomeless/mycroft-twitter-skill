@@ -65,6 +65,11 @@ class TwitterSkill(MycroftSkill):
             self.config.get('access_token'),
             self.config.get('access_secret'),
             self.user)
+        consumer_key = self.config.get('consumer_key')
+        consumer_secret = self.config.get('consumer_secret')
+        access_token = self.config.get('access_token')
+        access_secret = self.config.get('access_secret')
+        user = self.user
         LOGGER.debug('The consumer key is {}, the consumer secret is {}, the access_token is {}, the access secret is {}, the user is {}.'.format(consumer_key, consumer_secret, access_token, access_secret, user))
 
 
