@@ -65,7 +65,7 @@ class TwitterSkill(MycroftSkill):
             self.config.get('access_token'),
             self.config.get('access_secret'),
             self.user)
-
+        LOGGER.debug('The consumer key is {}, the consumer secret is {}, the access_token is {}, the access secret is {}, the user is {}.'.format(consumer_key, consumer_secret, access_token, access_secret, user))
 
 
     def get_followers(self):
