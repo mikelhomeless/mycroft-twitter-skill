@@ -63,7 +63,7 @@ class TwitterSkill(MycroftSkill):
             self.config.get('consumer_secret'),
             self.config.get('access_token'),
             self.config.get('access_secret'),
-            self.config.get('twitter_user')
+            self.config.get('twitter_user'))
 
     def get_followers(self, twitter_user):
         user = self.twitter.get_user(twitter_user)
