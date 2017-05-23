@@ -57,10 +57,16 @@ class TwitterSkill(MycroftSkill):
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
         super(TwitterSkill, self).__init__(name="TwitterSkill")
-        self.twitter = TwitterSkill(self.config.get('consumer_key'),
+        self.twitter = TwitterAPI(self.config.get('consumer_key'),
             self.config.get('consumer_secret'),
             self.config.get('access_token'),
-            self.config.get('access_secret'))
+            self.config.get('access_secret')),
+            self.config.get('twitter_user')
+
+    def get_followers(self, twitter_user):
+        user = self.twitter.get_user(twitter_user)
+        followers = user.followers_count
+        return followers
 
     # This method loads the files needed for the skill's functioning, and
     # creates and registers each intent that the skill uses
@@ -79,6 +85,7 @@ class TwitterSkill(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_get_followers_intent(self, message):
+        get_followers()
         self.speak_dialog("followers")
 
 
