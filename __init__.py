@@ -62,7 +62,7 @@ class TwitterSkill(MycroftSkill):
         self.twitter = TwitterAPI(self.config.get('consumer_key'),
             self.config.get('consumer_secret'),
             self.config.get('access_token'),
-            self.config.get('access_secret')),
+            self.config.get('access_secret'),
             self.config.get('twitter_user')
 
     def get_followers(self, twitter_user):
