@@ -68,7 +68,7 @@ class TwitterSkill(MycroftSkill):
 
 
     def get_followers(self):
-        user = self.twitter.get_user(user)
+        user = self.twitter.get_user(self.user)
         followers = user.followers_count
         return followers
 
@@ -89,7 +89,7 @@ class TwitterSkill(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_get_followers_intent(self, message):
-        self.twitter.get_followers(self.user)
+        self.twitter.get_followers()
         self.speak_dialog("followers")
 
 
