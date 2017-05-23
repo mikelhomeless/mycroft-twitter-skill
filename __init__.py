@@ -87,6 +87,11 @@ class TwitterSkill(MycroftSkill):
             require("Followers").optionally("Person").build()
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
 
+        get_followers_intent = IntentBuilder("FollowUserIntent").\
+            require("FollowUser").build()
+        self.register_intent(follow_user_intent, self.handle_follow_user_intent)
+
+
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
     # speaks a response. Note that the "speak_dialog" method doesn't
@@ -102,6 +107,14 @@ class TwitterSkill(MycroftSkill):
             followers_count = self.twitter.get_followers()
             self.speak_dialog("followers", data={"followers_count": followers_count})
 
+    def handle_follow_user_intent(self, message):
+        follow_user = message.data["User"]
+        LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
+        if follow_user is None:
+            self.speak("Sorry I'm not sure which twitter user you want me to follow.")
+        else:
+            self.twitter.api.create_friendship(follow_user)
+            self.speak("Successfully followed user {} on twitter".format(follow_user))
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
