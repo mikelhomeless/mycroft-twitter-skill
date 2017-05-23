@@ -89,7 +89,7 @@ class TwitterSkill(MycroftSkill):
 
         get_pres_followers_intent = IntentBuilder("GetPresFollowersIntent").\
             require("GetPresFollowersKeyword").build()
-        self.register_intent(get_pres_followers_intent, self.handle_get_pres_followers_intent)
+        self.register_intent(get_pres_followers_intent, self.handle_get_pres_followers)
 
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
