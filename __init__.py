@@ -87,7 +87,7 @@ class TwitterSkill(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_get_followers_intent(self, message):
-        get_followers()
+        self.get_followers()
         self.speak_dialog("followers")
 
 
