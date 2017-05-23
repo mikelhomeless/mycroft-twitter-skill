@@ -23,7 +23,10 @@ dependencies inside your mycroft virtual environment:
 If on picroft just skip the workon part and the directory will be /opt/mycroft/skills
 
 ```
+cd ~/.mycroft/skills
+git clone https://github.com/btotharye/mycroft-twitter-skill.git TwitterSkill
 workon mycroft
+cd TwitterSkill
 pip install tweepy
 ```
 
