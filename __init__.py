@@ -59,11 +59,13 @@ class TwitterSkill(MycroftSkill):
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
         super(TwitterSkill, self).__init__(name="TwitterSkill")
+        self.user = self.config.get('twitter_user')
         self.twitter = TwitterAPI(self.config.get('consumer_key'),
             self.config.get('consumer_secret'),
             self.config.get('access_token'),
-            self.config.get('access_secret'),
-            self.config.get('twitter_user'))
+            self.config.get('access_secret'))
+
+
 
     def get_followers(self, twitter_user):
         user = self.twitter.get_user(twitter_user)
@@ -86,8 +88,8 @@ class TwitterSkill(MycroftSkill):
     # actually speak the text it's passed--instead, that text is the filename
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
-    def handle_get_followers_intent(self, message, twitter_user):
-        self.twitter.get_followers(twitter_user)
+    def handle_get_followers_intent(self, message):
+        self.twitter.get_followers(self.user)
         self.speak_dialog("followers")
 
 
