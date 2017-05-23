@@ -96,7 +96,7 @@ class TwitterSkill(MycroftSkill):
     # the method is called.
     def handle_get_followers_intent(self, message):
         followers_count = self.twitter.get_followers()
-        self.speak_dialog("followers", data={followers_count})
+        self.speak_dialog("followers", data={"followers_count": followers_count})
 
 
     # The "stop" method defines what Mycroft does when told to stop during
