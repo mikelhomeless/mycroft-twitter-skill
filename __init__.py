@@ -40,10 +40,11 @@ LOGGER = getLogger(__name__)
 
 
 class TwitterAPI(object):
-    def __init__(self, consumer_key, consumer_secret, access_token, access_secret):
+    def __init__(self, consumer_key, consumer_secret, access_token, access_secret, user):
         auth = OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_token, access_secret)
         self.api = tweepy.API(auth)
+        self.user = user
 
 
     def get_followers(self):
@@ -63,7 +64,8 @@ class TwitterSkill(MycroftSkill):
         self.twitter = TwitterAPI(self.config.get('consumer_key'),
             self.config.get('consumer_secret'),
             self.config.get('access_token'),
-            self.config.get('access_secret'))
+            self.config.get('access_secret'),
+            self.user)
 
 
 
