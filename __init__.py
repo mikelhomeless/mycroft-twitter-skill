@@ -87,6 +87,10 @@ class TwitterSkill(MycroftSkill):
             require("GetFollowersKeyword").build()
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
 
+        get_pres_followers_intent = IntentBuilder("GetPresFollowersIntent").\
+            require("GetPresFollowersKeyword").build()
+        self.register_intent(get_pres_followers_intent, self.handle_get_pres_followers_intent)
+
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
@@ -97,6 +101,11 @@ class TwitterSkill(MycroftSkill):
     def handle_get_followers_intent(self, message):
         followers_count = self.twitter.get_followers()
         self.speak_dialog("followers", data={"followers_count": followers_count})
+
+    def handle_get_pres_followers(self, message):
+        pres_user = self.twitter.api.get_user('realDonaldTrump')
+        pres_follower_count = pres_user.followers_count
+        self.speak_dialog("Currently the president has {} followers".format(pres_follower_count))
 
 
     # The "stop" method defines what Mycroft does when told to stop during
