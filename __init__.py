@@ -57,7 +57,7 @@ class TwitterSkill(MycroftSkill):
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
         super(TwitterSkill, self).__init__(name="TwitterSkill")
-        self.twitter = TwitterClient(self.config.get('consumer_key'),
+        self.twitter = TwitterSkill(self.config.get('consumer_key'),
             self.config.get('consumer_secret'),
             self.config.get('access_token'),
             self.config.get('access_secret'))
