@@ -33,7 +33,7 @@ pip install tweepy
 
 ## Current state
 
-Working features:
+Working phrases:
  - How many twitter followers do I have
  - How many twitter followers does trump have
  - How many twitter followers does the president have.
