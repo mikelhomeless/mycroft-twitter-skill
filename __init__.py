@@ -84,9 +84,8 @@ class TwitterSkill(MycroftSkill):
         self.load_data_files(dirname(__file__))
 
         get_followers_intent = IntentBuilder("GetFollowersIntent").\
-            require("GetFollowersKeyword").build()
+            require("Followers").optionally("Person").build()
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
-
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
@@ -95,9 +94,13 @@ class TwitterSkill(MycroftSkill):
     # of a file in the dialog folder, and Mycroft speaks its contents when
     # the method is called.
     def handle_get_followers_intent(self, message):
-        followers_count = self.twitter.get_followers()
-        self.speak_dialog("followers", data={"followers_count": followers_count})
-
+        if message.data.get("Person"):
+            pres_user = self.twitter.api.get_user('realDonaldTrump')
+            pres_follower_count = pres_user.followers_count
+            self.speak("Currently the president has {} followers".format(pres_follower_count))
+        else:
+            followers_count = self.twitter.get_followers()
+            self.speak_dialog("followers", data={"followers_count": followers_count})
 
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
