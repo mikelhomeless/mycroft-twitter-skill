@@ -29,7 +29,6 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 import tweepy
-from tweepy import OAuthHandler
 
 
 __author__ = 'btotharye'
@@ -41,7 +40,7 @@ LOGGER = getLogger(__name__)
 
 class TwitterAPI(object):
     def __init__(self, consumer_key, consumer_secret, access_token, access_secret, user):
-        auth = OAuthHandler(consumer_key, consumer_secret)
+        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_token, access_secret)
         self.api = tweepy.API(auth)
         self.user = user
