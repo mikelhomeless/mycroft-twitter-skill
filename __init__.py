@@ -67,8 +67,8 @@ class TwitterSkill(MycroftSkill):
 
 
 
-    def get_followers(self, twitter_user):
-        user = self.twitter.get_user(twitter_user)
+    def get_followers(self):
+        user = self.twitter.get_user(user)
         followers = user.followers_count
         return followers
 
