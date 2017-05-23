@@ -105,7 +105,7 @@ class TwitterSkill(MycroftSkill):
     def handle_get_pres_followers(self, message):
         pres_user = self.twitter.api.get_user('realDonaldTrump')
         pres_follower_count = pres_user.followers_count
-        self.speak_dialog("Currently the president has {} followers".format(pres_follower_count))
+        self.speak("Currently the president has {} followers".format(pres_follower_count))
 
 
     # The "stop" method defines what Mycroft does when told to stop during
