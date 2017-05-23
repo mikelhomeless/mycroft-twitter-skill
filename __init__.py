@@ -48,8 +48,8 @@ class TwitterAPI(object):
 
 
     def get_followers(self):
-        user = self.api.get_user(self.user)
-        followers = user.followers_count
+        twitter_user = self.api.get_user(self.user)
+        followers = twitter_user.followers_count
         return followers
 
 # The logic of each skill is contained within its own class, which inherits
