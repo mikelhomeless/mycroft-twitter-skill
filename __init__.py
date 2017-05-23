@@ -40,14 +40,14 @@ LOGGER = getLogger(__name__)
 
 
 class TwitterAPI(object):
-    def __init__(self, consumer_key, consumer_secret, access_token, access_secret, twitter_user):
+    def __init__(self, consumer_key, consumer_secret, access_token, access_secret):
         auth = OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_token, access_secret)
         self.api = tweepy.API(auth)
 
 
-    def get_followers(self, twitter_user):
-        user = self.api.get_user(twitter_user)
+    def get_followers(self):
+        user = self.api.get_user(self.user)
         followers = user.followers_count
         return followers
 
