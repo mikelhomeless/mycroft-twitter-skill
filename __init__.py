@@ -87,11 +87,6 @@ class TwitterSkill(MycroftSkill):
             require("Followers").optionally("Person").build()
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
 
-        get_pres_followers_intent = IntentBuilder("GetPresFollowersIntent").\
-            require("GetPresFollowersKeyword").build()
-        self.register_intent(get_pres_followers_intent, self.handle_get_pres_followers)
-
-
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
     # speaks a response. Note that the "speak_dialog" method doesn't
