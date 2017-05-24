@@ -108,7 +108,7 @@ class TwitterSkill(MycroftSkill):
 
     def handle_follow_user_intent(self, message):
         LOGGER.debug("The message data is {}".format(message.data))
-        follow_user = message.data.get("User")
+        follow_user = message.data["User"]
         LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
         if follow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to follow.")
