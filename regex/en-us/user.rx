@@ -1,1 +1,1 @@
-(follow)(?P<User>.*)
+(?P<User>.*)
