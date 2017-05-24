@@ -109,8 +109,8 @@ class TwitterSkill(MycroftSkill):
     # Follow user intent, takes userid from message and follows them.
     #
     def handle_follow_unfollow_user_intent(self, message):
-        follow_user = message.data["User"]
-        action = message.data["Action"]
+        follow_user = message.data["user"]
+        action = message.data["action"]
         LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
         LOGGER.debug("Action is {}".format(action))
         if action == "follow":
