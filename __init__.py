@@ -131,7 +131,7 @@ class TwitterSkill(MycroftSkill):
         if follow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to unfollow.")
         else:
-            self.twitter.api.create_friendship(follow_user)
+            self.twitter.api.destroy_friendship(follow_user)
             self.speak("Successfully unfollowed user {} on twitter".format(follow_user))
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
