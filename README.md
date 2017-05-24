@@ -38,6 +38,7 @@ Working features:
  - How many twitter followers does trump have
  - How many twitter followers does the president have.
  - Follow br1anhopkins - To follow me on twitter, otherwise can be any twitter userid.
+ - Unfollow br1anhopkins - To unfolow me but why would you want to do that :).  Same way any userid.
 
 Known issues:
  - ...
