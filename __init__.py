@@ -23,7 +23,7 @@
 
 # Import statements: the list of outside modules you'll be using in your
 # skills, whether from other files in mycroft-core or from external libraries
-from os.path import dirname
+from os.path import dirname, join
 
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
@@ -70,8 +70,6 @@ class TwitterSkill(MycroftSkill):
         access_token = self.config.get('access_token')
         access_secret = self.config.get('access_secret')
         user = self.user
-        LOGGER.debug('The consumer key is {}, the consumer secret is {}, the access_token is {}, the access secret is {}, the user is {}.'.format(consumer_key, consumer_secret, access_token, access_secret, user))
-
 
     def get_followers(self):
         user = self.twitter.api.get_user(self.user)
@@ -82,10 +80,16 @@ class TwitterSkill(MycroftSkill):
     # creates and registers each intent that the skill uses
     def initialize(self):
         self.load_data_files(dirname(__file__))
+        self.load_regex_files(join(dirname(__file__), 'regex', self.lang))
 
         get_followers_intent = IntentBuilder("GetFollowersIntent").\
             require("Followers").optionally("Person").build()
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
+
+        follow_user_intent = IntentBuilder("FollowUserIntent").\
+            require("FollowUser").require("user").build()
+        self.register_intent(follow_user_intent, self.handle_follow_user_intent)
+
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
@@ -102,6 +106,15 @@ class TwitterSkill(MycroftSkill):
             followers_count = self.twitter.get_followers()
             self.speak_dialog("followers", data={"followers_count": followers_count})
 
+    def handle_follow_user_intent(self, message):
+        LOGGER.debug("The message data is {}".format(message.data))
+        follow_user = message.data["user"]
+        LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
+        if follow_user is None:
+            self.speak("Sorry I'm not sure which twitter user you want me to follow.")
+        else:
+            self.twitter.api.create_friendship(follow_user)
+            self.speak("Successfully followed user {} on twitter".format(follow_user))
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
