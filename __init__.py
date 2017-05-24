@@ -91,7 +91,7 @@ class TwitterSkill(MycroftSkill):
         self.register_intent(follow_user_intent, self.handle_follow_user_intent)
 
         unfollow_user_intent = IntentBuilder("UnFollowUserIntent").\
-            require("UnFollowUser").optionally("unfollow").build()
+            require("UnFollowUser").optionally("user").build()
         self.register_intent(unfollow_user_intent, self.handle_unfollow_user_intent)
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
@@ -114,7 +114,7 @@ class TwitterSkill(MycroftSkill):
     #
     def handle_follow_user_intent(self, message):
         LOGGER.debug("The message data is: {}".format(message.data))
-        follow_user = message.data["follow_user"]
+        follow_user = message.data["user"]
         LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
         if follow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to follow.")
@@ -126,7 +126,7 @@ class TwitterSkill(MycroftSkill):
     # Follow user intent, takes userid from message and follows them.
     #
     def handle_unfollow_user_intent(self, message):
-        follow_user = message.data["unfollow_user"]
+        unfollow_user = message.data["user"]
         LOGGER.debug("Twitter user to unfollow is: {}".format(follow_user))
         if follow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to unfollow.")
