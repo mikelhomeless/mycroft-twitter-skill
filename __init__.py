@@ -87,7 +87,7 @@ class TwitterSkill(MycroftSkill):
             require("Followers").optionally("Person").build()
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
 
-        get_followers_intent = IntentBuilder("FollowUserIntent").\
+        follow_user_intent = IntentBuilder("FollowUserIntent").\
             require("FollowUser").build()
         self.register_intent(follow_user_intent, self.handle_follow_user_intent)
 
