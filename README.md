@@ -37,6 +37,7 @@ Working features:
  - How many twitter followers do I have
  - How many twitter followers does trump have
  - How many twitter followers does the president have.
+ - Follow br1anhopkins - To follow me on twitter, otherwise can be any twitter userid.
 
 Known issues:
  - ...
@@ -44,4 +45,3 @@ Known issues:
 TODO:
  - Post tweets
  - Get last status update from President (aka what he last tweeted)
- - Tell mycroft to follow a user
