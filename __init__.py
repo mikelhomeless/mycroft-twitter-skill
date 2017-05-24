@@ -87,7 +87,7 @@ class TwitterSkill(MycroftSkill):
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
 
         follow_unfollow_user_intent = IntentBuilder("FollowUnfollowUserIntent").\
-            require("FollowUnfollowUser").require("follow").build()
+            require("FollowUnfollowUser").require("Action").require("User").build()
         self.register_intent(follow_unfollow_user_intent, self.handle_follow_unfollow_user_intent)
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
@@ -109,8 +109,8 @@ class TwitterSkill(MycroftSkill):
     # Follow user intent, takes userid from message and follows them.
     #
     def handle_follow_unfollow_user_intent(self, message):
-        follow_user = message.data["user"]
-        action = message.data["action"]
+        follow_user = message.data["User"]
+        action = message.data["Action"]
         LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
         LOGGER.debug("Action is {}".format(action))
         if action == "follow":
