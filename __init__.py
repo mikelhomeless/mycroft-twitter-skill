@@ -70,8 +70,6 @@ class TwitterSkill(MycroftSkill):
         access_token = self.config.get('access_token')
         access_secret = self.config.get('access_secret')
         user = self.user
-        LOGGER.debug('The consumer key is {}, the consumer secret is {}, the access_token is {}, the access secret is {}, the user is {}.'.format(consumer_key, consumer_secret, access_token, access_secret, user))
-
 
     def get_followers(self):
         user = self.twitter.api.get_user(self.user)
@@ -89,7 +87,7 @@ class TwitterSkill(MycroftSkill):
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
 
         follow_user_intent = IntentBuilder("FollowUserIntent").\
-            require("FollowUser").build()
+            require("FollowUser").require("user").build()
         self.register_intent(follow_user_intent, self.handle_follow_user_intent)
 
 
@@ -110,7 +108,7 @@ class TwitterSkill(MycroftSkill):
 
     def handle_follow_user_intent(self, message):
         LOGGER.debug("The message data is {}".format(message.data))
-        follow_user = message.data["User"]
+        follow_user = message.data.get("User")
         LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
         if follow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to follow.")
