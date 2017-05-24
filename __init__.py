@@ -82,6 +82,7 @@ class TwitterSkill(MycroftSkill):
     # creates and registers each intent that the skill uses
     def initialize(self):
         self.load_data_files(dirname(__file__))
+        self.load_regex_files(join(dirname(__file__), 'regex', self.lang))
 
         get_followers_intent = IntentBuilder("GetFollowersIntent").\
             require("Followers").optionally("Person").build()
