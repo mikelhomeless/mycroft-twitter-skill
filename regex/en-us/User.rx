@@ -1,1 +1,1 @@
-un|follow (?P<User>.*)
+(?P<Action>follow|unfollow) (?P<User>.*)

@@ -86,14 +86,9 @@ class TwitterSkill(MycroftSkill):
             require("Followers").optionally("Person").build()
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
 
-        follow_user_intent = IntentBuilder("FollowUserIntent").\
-            require("FollowUser").require("user").build()
-        self.register_intent(follow_user_intent, self.handle_follow_user_intent)
-
-        unfollow_user_intent = IntentBuilder("UnFollowUserIntent").\
-            require("UnFollowUser").require("user").build()
-        self.register_intent(unfollow_user_intent, self.handle_unfollow_user_intent)
-
+        follow_unfollow_user_intent = IntentBuilder("FollowUnfollowUserIntent").\
+            require("FollowUnfollowUser").require("user").require("action").build()
+        self.register_intent(follow_unfollow_user_intent, self.handle_follow_unfollow_user_intent)
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
@@ -113,26 +108,24 @@ class TwitterSkill(MycroftSkill):
     #
     # Follow user intent, takes userid from message and follows them.
     #
-    def handle_follow_user_intent(self, message):
+    def handle_follow_unfollow_user_intent(self, message):
         follow_user = message.data["user"]
+        action = message.data["action"]
         LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
-        if follow_user is None:
-            self.speak("Sorry I'm not sure which twitter user you want me to follow.")
-        else:
-            self.twitter.api.create_friendship(follow_user)
-            self.speak("Successfully followed user {} on twitter".format(follow_user))
+        LOGGER.debug("Action is {}".format(action))
+        if action == "follow":
+            if follow_user is None:
+                self.speak("Sorry I'm not sure which twitter user you want me to follow.")
+            else:
+                self.twitter.api.create_friendship(follow_user)
+                self.speak("Successfully followed user {} on twitter".format(follow_user))
+        if action == "unfollow":
+            if unfollow_user is None:
+                self.speak("Sorry I'm not sure which twitter user you want me to unfollow.")
+            else:
+                self.twitter.api.destroy_friendship(unfollow_user)
+                self.speak("Successfully unfollowed user {} on twitter".format(unfollow_user))
 
-    #
-    # Follow user intent, takes userid from message and follows them.
-    #
-    def handle_unfollow_user_intent(self, message):
-        unfollow_user = message.data["user"]
-        LOGGER.debug("Twitter user to unfollow is: {}".format(unfollow_user))
-        if follow_user is None:
-            self.speak("Sorry I'm not sure which twitter user you want me to unfollow.")
-        else:
-            self.twitter.api.destroy_friendship(unfollow_user)
-            self.speak("Successfully unfollowed user {} on twitter".format(unfollow_user))
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
     # is extremely simple, the method just contains the keyword "pass", which
