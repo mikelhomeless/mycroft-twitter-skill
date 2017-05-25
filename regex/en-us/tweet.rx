@@ -1,1 +1,1 @@
-post twitter (?P<status_post>.*)
+post to twitter (?P<status_post>.*)
