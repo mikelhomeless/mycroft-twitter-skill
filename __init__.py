@@ -140,6 +140,7 @@ class TwitterSkill(MycroftSkill):
             self.speak("Successfully unfollowed user {} on twitter".format(unfollow_user))
 
     def handle_post_tweet_intent(self, message):
+        LOGGER.debug("The message data is: {}".format(message.data))
         status_post = message.data["status_post"]
         if status_post is None:
             self.speak("Sorry I'm not sure what you want me to post.")
