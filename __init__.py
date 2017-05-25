@@ -87,11 +87,11 @@ class TwitterSkill(MycroftSkill):
         self.register_intent(get_followers_intent, self.handle_get_followers_intent)
 
         follow_user_intent = IntentBuilder("FollowUserIntent").\
-            require("FollowUser").optionally("follow").optionally("follow_user").build()
+            require("FollowUser").optionally("follow").optionally("user").build()
         self.register_intent(follow_user_intent, self.handle_follow_user_intent)
 
         unfollow_user_intent = IntentBuilder("UnFollowUserIntent").\
-            require("UnFollowUser").optionally("unfollow_user").build()
+            require("UnFollowUser").optionally("unfollow").optionally("user").build()
         self.register_intent(unfollow_user_intent, self.handle_unfollow_user_intent)
 
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
