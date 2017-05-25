@@ -114,7 +114,7 @@ class TwitterSkill(MycroftSkill):
     #
     def handle_follow_user_intent(self, message):
         LOGGER.debug("The message data is: {}".format(message.data))
-        follow_user = message.data["user"]
+        follow_user = message.data["user"].replace(" ", "")
         LOGGER.debug("Twitter user to follow is: {}".format(follow_user))
         if follow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to follow.")
@@ -127,7 +127,7 @@ class TwitterSkill(MycroftSkill):
     #
     def handle_unfollow_user_intent(self, message):
         LOGGER.debug("The message data is: {}".format(message.data))
-        unfollow_user = message.data["user"]
+        unfollow_user = message.data["user"].replace(" ", "")
         LOGGER.debug("Twitter user to unfollow is: {}".format(unfollow_user))
         if unfollow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to unfollow.")
