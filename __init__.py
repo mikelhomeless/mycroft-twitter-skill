@@ -129,7 +129,7 @@ class TwitterSkill(MycroftSkill):
         LOGGER.debug("The message data is: {}".format(message.data))
         unfollow_user = message.data["user"]
         LOGGER.debug("Twitter user to unfollow is: {}".format(unfollow_user))
-        if follow_user is None:
+        if unfollow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to unfollow.")
         else:
             self.twitter.api.destroy_friendship(unfollow_user)
