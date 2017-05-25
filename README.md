@@ -30,7 +30,6 @@ cd TwitterSkill
 pip install tweepy
 ```
 
-
 ## Current state
 
 Working phrases:
