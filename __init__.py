@@ -128,12 +128,12 @@ class TwitterSkill(MycroftSkill):
     def handle_unfollow_user_intent(self, message):
         LOGGER.debug("The message data is: {}".format(message.data))
         unfollow_user = message.data["user"]
-        LOGGER.debug("Twitter user to unfollow is: {}".format(follow_user))
+        LOGGER.debug("Twitter user to unfollow is: {}".format(unfollow_user))
         if follow_user is None:
             self.speak("Sorry I'm not sure which twitter user you want me to unfollow.")
         else:
-            self.twitter.api.destroy_friendship(follow_user)
-            self.speak("Successfully unfollowed user {} on twitter".format(follow_user))
+            self.twitter.api.destroy_friendship(unfollow_user)
+            self.speak("Successfully unfollowed user {} on twitter".format(unfollow_user))
 
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
