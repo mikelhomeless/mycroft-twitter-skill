@@ -39,10 +39,12 @@ Working features:
  - How many twitter followers does the president have.
  - Follow br1anhopkins - To follow me on twitter, otherwise can be any twitter userid.
  - Unfollow br1anhopkins - To unfolow me but why would you want to do that :).  Same way any userid.
+ - Post to twitter today is a great day to tweet from mycroftai - This will post a tweet with anything after the post to twitter part, use with caution no verify yet before it posts to twitter.
 
 Known issues:
  - ...
 
 TODO:
- - Post tweets
+ - Whats trending
+ - Search users
  - Get last status update from President (aka what he last tweeted)
