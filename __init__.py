@@ -94,6 +94,10 @@ class TwitterSkill(MycroftSkill):
             require("UnFollowUser").optionally("unfollow").optionally("user").build()
         self.register_intent(unfollow_user_intent, self.handle_unfollow_user_intent)
 
+        post_tweet_intent = IntentBuilder("PostTweetIntent").\
+            require("PostTweet").optionally("tweet").optionally("status_post").build()
+        self.register_intent(post_tweet_intent, self.handle_post_tweet_intent)
+
     # The "handle_xxxx_intent" functions define Mycroft's behavior when
     # each of the skill's intents is triggered: in this case, he simply
     # speaks a response. Note that the "speak_dialog" method doesn't
@@ -134,6 +138,15 @@ class TwitterSkill(MycroftSkill):
         else:
             self.twitter.api.destroy_friendship(unfollow_user)
             self.speak("Successfully unfollowed user {} on twitter".format(unfollow_user))
+
+    def handle_post_tweet_intent(self, message):
+        LOGGER.debug("The message data is: {}".format(message.data))
+        status_post = message.data["status_post"]
+        if status_post is None:
+            self.speak("Sorry I'm not sure what you want me to post.")
+        else:
+            self.twitter.api.update_status(status=status_post)
+            self.speak("Successfully posted status update to twitter.  What I posted is: {}".format(status_post))
 
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
