@@ -146,7 +146,7 @@ class TwitterSkill(MycroftSkill):
             self.speak("Sorry I'm not sure what you want me to post.")
         else:
             self.twitter.api.update_status(status=status_post)
-            self.speak("Successfully posted status update to twitter.")
+            self.speak("Successfully posted status update to twitter.  What I posted is: {}".format(status_post))
 
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
