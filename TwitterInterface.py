@@ -20,6 +20,8 @@ For a time stamp
 And so on and so forth'''
 
 class TwitterInterface:
+    
+    __author__ = "mikelhomeless"
 
     def __init__(self):
         import tweepy
