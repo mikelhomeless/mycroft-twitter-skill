@@ -60,6 +60,7 @@ TODO:
  - Whats trending
  - Search users
  - Get last status update from President (aka what he last tweeted)
+ - Remove the keys folder from repository
 
 
 ## Credits 
