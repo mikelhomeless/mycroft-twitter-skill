@@ -1,3 +1,0 @@
-Your last tweet touched the souls of {{retweet_count}} people
-{{retweet_count}} people retweeted your last tweet
-Congrats!! {{retweet_count}} people retweeted your last tweet. A milestone for you I'm sure
