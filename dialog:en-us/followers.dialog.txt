@@ -1,4 +1,0 @@
-This user currently has {{follower_count}} followers
-{{user_name}} has {{follower_count}} followers
-There are {{follower_count}} people following this user
-{{follower_count}} people are following this account
