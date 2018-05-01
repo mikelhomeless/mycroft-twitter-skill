@@ -1,2 +1,0 @@
-The following will be posted {{tweet}}
-Okay, here's what I got {{tweet}}
