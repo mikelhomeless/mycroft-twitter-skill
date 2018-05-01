@@ -1,0 +1,2 @@
+{{user_name}} mentioned you in the following tweet at {{created_at}}. {{tweet}}
+At {{created_at}} {{user_name}} mentioned you in the following tweet {{tweet}}
