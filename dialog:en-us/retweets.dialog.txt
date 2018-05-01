@@ -1,3 +1,0 @@
-This tweet has {{retweet_count}} retweets
-{{retweet_count}} people retweeted this
-{{retweet_count}} retweets
