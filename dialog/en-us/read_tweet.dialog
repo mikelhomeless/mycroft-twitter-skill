@@ -1,0 +1,2 @@
+At {{created_at}} {{user_name}} tweeted {{tweet}}
+The following was tweeted by {{user_name}} at {{created_at}}: {{tweet}}
