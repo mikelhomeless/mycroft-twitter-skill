@@ -1,3 +1,0 @@
-I have  {{msg}} going to {{user_name}}
-Got it. You want me to send {{msg}} to {{user_name}}
-{{msg}} will be sent to {{user_name}}
