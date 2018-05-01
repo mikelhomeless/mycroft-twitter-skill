@@ -1,5 +1,0 @@
-You currently have {{follower_count}} followers
-{{follower_count}} people are following you
-{{follower_count}} people think you're worthy
-You're interesting enough for {{follower_count}} people to pay attention to you
-Wow! {{follower_count}} people follow you. Take that mom!
