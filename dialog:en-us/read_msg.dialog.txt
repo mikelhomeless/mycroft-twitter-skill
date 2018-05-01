@@ -1,3 +1,0 @@
-At {{created_at}} {{user_name}} sent you {{msg}}
-{{user_name}} sent {{msg}} at {{created_at}}
-You received a message from {{user_name}} at {{created_at}} saying {{msg}}
